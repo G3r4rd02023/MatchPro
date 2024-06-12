@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchPro.Backend", "MatchPro.Backend\MatchPro.Backend.csproj", "{8CE33EBB-EFDB-438F-91DA-3EBC301C5175}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchPro.Shared", "MatchPro.Shared\MatchPro.Shared.csproj", "{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CE33EBB-EFDB-438F-91DA-3EBC301C5175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE33EBB-EFDB-438F-91DA-3EBC301C5175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE33EBB-EFDB-438F-91DA-3EBC301C5175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE33EBB-EFDB-438F-91DA-3EBC301C5175}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4B0431B-6CF2-4FEE-B7FE-DFDA5481463C}
+	EndGlobalSection
+EndGlobal
