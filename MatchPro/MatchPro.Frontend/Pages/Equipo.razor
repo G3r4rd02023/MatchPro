@@ -1,6 +1,7 @@
 ﻿@using MatchPro.Shared;
 @using MatchPro.Frontend.Services;
 @using MatchPro.Frontend.Layout;
+@using CurrieTechnologies.Razor.SweetAlert2;
 
 
 <h3>Equipo</h3>
@@ -10,6 +11,7 @@
 
 @inject IEquipoService EquipoService;
 @inject NavigationManager navegacion;
+@inject SweetAlertService Swal;
 
 
 <h3>@titulo</h3>
@@ -27,7 +29,7 @@
         @btnTexto
     </button>
 
-    <a class="btn btn-warning" href="empleados">Volver</a>
+    <a class="btn btn-warning" href="equipos">Volver</a>
 
 </EditForm>
 
@@ -63,18 +65,25 @@
     private async Task OnValidSubmit()
     {
         int idDevuelto = 0;
+        
         if(id == 0)
         {
             idDevuelto = await EquipoService.Guardar(equipo);
         }
         else
         {
-            idDevuelto = await EquipoService.Editar(equipo);
+            idDevuelto = await EquipoService.Editar(id,equipo);
         }
 
         if(idDevuelto != 0)
         {
             navegacion.NavigateTo("/equipos");
+            await Swal.FireAsync(new SweetAlertOptions
+            {
+               Title = "Exito",
+               Text = "Registro Actualizado Exitosamente",
+               Icon = SweetAlertIcon.Success,
+            });
         }
     }
 

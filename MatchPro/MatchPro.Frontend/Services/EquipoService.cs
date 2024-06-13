@@ -13,26 +13,41 @@ namespace MatchPro.Frontend.Services
             _http = http;
         }
 
-        public Task<EquipoDTO> Buscar(int id)
+        public async Task<EquipoDTO> Buscar(int id)
         {
-            throw new NotImplementedException();
+            var response = await _http.GetFromJsonAsync<EquipoDTO>($"api/Equipos/{id}");
+            if (response != null)
+            {
+                return response;
+            }
+            throw new Exception($"No se encontró el equipo con ID {id}");
         }
 
-        public Task<int> Editar(EquipoDTO empleado)
+        public async Task<int> Editar(int id, EquipoDTO equipo)
         {
-            throw new NotImplementedException();
+            var response = await _http.PutAsJsonAsync($"api/Equipos/{id}", equipo);
+            if (response.IsSuccessStatusCode) 
+            {
+                return 1;
+            }
+            return 0;
         }
 
-        public Task<bool> Eliminar(int id)
+        public async Task<bool> Eliminar(int id)
         {
-            throw new NotImplementedException();
+            var response = await _http.DeleteAsync($"api/Equipos/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            throw new Exception($"No se encontró el equipo con ID {id}");
         }
 
         public async Task<int> Guardar(EquipoDTO equipo)
         {
             var response = await _http.PostAsJsonAsync("api/Equipos", equipo);
             if (response.IsSuccessStatusCode)
-            {                
+            {                                
                 return 1;
             }
             return 0;

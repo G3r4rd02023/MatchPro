@@ -6,8 +6,8 @@ namespace MatchPro.Frontend.Services
     {
         Task<List<EquipoDTO>> Lista();
         Task<EquipoDTO> Buscar(int id);
-        Task<int> Guardar(EquipoDTO empleado);
-        Task<int> Editar(EquipoDTO empleado);
+        Task<int> Guardar( EquipoDTO equipo);
+        Task<int> Editar(int id, EquipoDTO equipo);
         Task<bool> Eliminar(int id);
     }
 }
