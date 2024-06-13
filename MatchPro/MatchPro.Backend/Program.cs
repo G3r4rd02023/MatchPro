@@ -2,6 +2,7 @@
 using MatchPro.Backend.Models;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace MatchPro.Backend
 {
     public class Program
@@ -20,6 +21,7 @@ namespace MatchPro.Backend
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+           
             builder.Services.AddCors(opciones => {
                 opciones.AddPolicy("nuevaPolitica", app =>
                 {

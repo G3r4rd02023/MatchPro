@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchPro.Backend", "MatchPro.Backend\MatchPro.Backend.csproj", "{8CE33EBB-EFDB-438F-91DA-3EBC301C5175}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchPro.Backend", "MatchPro.Backend\MatchPro.Backend.csproj", "{8CE33EBB-EFDB-438F-91DA-3EBC301C5175}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchPro.Shared", "MatchPro.Shared\MatchPro.Shared.csproj", "{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchPro.Shared", "MatchPro.Shared\MatchPro.Shared.csproj", "{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchPro.Frontend", "MatchPro.Frontend\MatchPro.Frontend.csproj", "{561108FD-FA2C-45C6-B782-535E4B9FD9B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchPro.Frontend", "MatchPro.Frontend\MatchPro.Frontend.csproj", "{561108FD-FA2C-45C6-B782-535E4B9FD9B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -28,9 +28,14 @@ namespace MatchPro.Frontend.Services
             throw new NotImplementedException();
         }
 
-        public Task<int> Guardar(EquipoDTO empleado)
+        public async Task<int> Guardar(EquipoDTO equipo)
         {
-            throw new NotImplementedException();
+            var response = await _http.PostAsJsonAsync("api/Equipos", equipo);
+            if (response.IsSuccessStatusCode)
+            {                
+                return 1;
+            }
+            return 0;
         }
 
         public async Task<List<EquipoDTO>> Lista()

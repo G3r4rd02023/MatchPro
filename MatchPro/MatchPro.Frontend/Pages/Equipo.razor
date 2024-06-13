@@ -1,0 +1,82 @@
+﻿@using MatchPro.Shared;
+@using MatchPro.Frontend.Services;
+@using MatchPro.Frontend.Layout;
+
+
+<h3>Equipo</h3>
+
+@page "/equipo"
+@page "/equipo/{id:int}"
+
+@inject IEquipoService EquipoService;
+@inject NavigationManager navegacion;
+
+
+<h3>@titulo</h3>
+
+<EditForm Model="equipo" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+    <div class=" mb-3">
+        <label class=" form-label">Nombre</label>
+        <InputText class=" form-control" @bind-Value="equipo.Nombre"></InputText>
+        <ValidationMessage For="@(() => equipo.Nombre)"></ValidationMessage>
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        @btnTexto
+    </button>
+
+    <a class="btn btn-warning" href="empleados">Volver</a>
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public int id { get; set; } = 0;
+
+   
+
+    string titulo = string.Empty;
+    string btnTexto = string.Empty;
+    
+
+    EquipoDTO equipo = new EquipoDTO();
+
+    
+
+    protected override async Task OnInitializedAsync()
+    {
+        if(id != 0)
+        {
+            equipo = await EquipoService.Buscar(id);
+            btnTexto = "Actualizar Equipo";
+            titulo = "Editar Equipo";
+        }
+        else
+        {
+            btnTexto = "Crear Equipo";
+            titulo = "Nuevo Equipo";
+        }
+    }
+
+    private async Task OnValidSubmit()
+    {
+        int idDevuelto = 0;
+        if(id == 0)
+        {
+            idDevuelto = await EquipoService.Guardar(equipo);
+        }
+        else
+        {
+            idDevuelto = await EquipoService.Editar(equipo);
+        }
+
+        if(idDevuelto != 0)
+        {
+            navegacion.NavigateTo("/equipos");
+        }
+    }
+
+   
+}

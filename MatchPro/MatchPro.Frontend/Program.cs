@@ -1,3 +1,4 @@
+using CurrieTechnologies.Razor.SweetAlert2;
 using MatchPro.Frontend.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -13,7 +14,8 @@ namespace MatchPro.Frontend
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7236") });
-            builder.Services.AddScoped<IEquipoService, EquipoService>();
+            builder.Services.AddScoped<IEquipoService, EquipoService>();            
+            builder.Services.AddSweetAlert2();
             await builder.Build().RunAsync();
         }
     }

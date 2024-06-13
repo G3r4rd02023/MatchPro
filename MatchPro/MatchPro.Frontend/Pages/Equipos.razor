@@ -1,29 +1,61 @@
 ﻿@using MatchPro.Frontend.Services;
+@using CurrieTechnologies.Razor.SweetAlert2;
 @using MatchPro.Shared;
 
-<h3>Equipos</h3>
+<h3 class=" text-center fw-bold">Equipos</h3>
+<hr />
 
 @page "/equipos"
 
+@inject SweetAlertService Swal;
 @inject IEquipoService EquipoService
 
-<h3>Lista de Equipos</h3>
 
-@if (equipos == null)
-{
-    <p><em>Cargando...</em></p>
-}
 
-else
-{
-    <ul>
-        @foreach (var equipo in equipos)
+<a class="btn btn-primary btn-sm mb-3" href="equipo"><i class="oi oi-plus"></i> Nuevo Equipo</a>
+
+<table class=" table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Logo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (equipos == null)
         {
-            <li>@equipo.Nombre</li>
-            <li>@equipo.Logo</li>
+            <tr>
+                <td colspan="5" align="center">
+                    <img style="width:50px" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" />
+                </td>
+            </tr>
         }
-    </ul>
-}
+        else
+        {
+            @foreach(var item in equipos) 
+            {
+                <tr>
+                    <td>@item.Nombre</td>
+                    <td>@item.Logo</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm" href="empleado/@item.Id">
+                            <i class="oi oi-pencil"></i>
+                        </a>
+                        <button type="button" class="btn btn-danger btn-sm ms-2" @onclick="(() => Eliminar(item.Id))">
+                            <i class="oi oi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+            
+        }
+    </tbody>
+</table>
+
+
+
+
 
 
 @code {
@@ -34,4 +66,22 @@ else
         equipos = await EquipoService.Lista();
     }
 
+    private async Task Eliminar(int id)
+    {
+        var resultado = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Eliminar Equipo",
+                Text = "Deseas eliminar el equipo?",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true
+            });
+
+        if (resultado.IsConfirmed)
+        {
+            var eliminado = await EquipoService.Eliminar(id);
+
+            if (eliminado)
+                equipos = equipos!.FindAll(e => e.Id != id);
+        }
+    }
 }
