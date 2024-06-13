@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchPro.Backend", "MatchPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchPro.Shared", "MatchPro.Shared\MatchPro.Shared.csproj", "{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchPro.Frontend", "MatchPro.Frontend\MatchPro.Frontend.csproj", "{561108FD-FA2C-45C6-B782-535E4B9FD9B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EDE2608-EA20-454D-BD2C-CD678FE98DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561108FD-FA2C-45C6-B782-535E4B9FD9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561108FD-FA2C-45C6-B782-535E4B9FD9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561108FD-FA2C-45C6-B782-535E4B9FD9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561108FD-FA2C-45C6-B782-535E4B9FD9B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
