@@ -14,7 +14,8 @@ namespace MatchPro.Frontend
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7236") });
-            builder.Services.AddScoped<IEquipoService, EquipoService>();            
+            builder.Services.AddScoped<IEquipoService, EquipoService>();
+            builder.Services.AddScoped<IImagenService, ImagenService>();
             builder.Services.AddSweetAlert2();
             await builder.Build().RunAsync();
         }

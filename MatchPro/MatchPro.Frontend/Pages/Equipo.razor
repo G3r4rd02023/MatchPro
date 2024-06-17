@@ -10,6 +10,7 @@
 @page "/equipo/{id:int}"
 
 @inject IEquipoService EquipoService;
+@inject IImagenService ImagenService;
 @inject NavigationManager navegacion;
 @inject SweetAlertService Swal;
 
@@ -25,6 +26,11 @@
         <ValidationMessage For="@(() => equipo.Nombre)"></ValidationMessage>
     </div>
 
+    <div class="mb-3">
+        <label class="form-label">Subir Foto</label>
+        <InputFile OnChange="OnInputFileChange" />
+    </div>
+
     <button class="btn btn-primary" type="submit">
         @btnTexto
     </button>
@@ -37,15 +43,15 @@
     [Parameter]
     public int id { get; set; } = 0;
 
-   
+
 
     string titulo = string.Empty;
     string btnTexto = string.Empty;
-    
 
+    private IBrowserFile? foto;
     EquipoDTO equipo = new EquipoDTO();
 
-    
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -65,7 +71,20 @@
     private async Task OnValidSubmit()
     {
         int idDevuelto = 0;
-        
+
+        if (foto != null)
+        {
+
+            Stream image = foto.OpenReadStream();
+            string urlImagen = await ImagenService.SubirImagen(image, foto.Name);
+            equipo.Logo = urlImagen;
+            // using (var stream = new MemoryStream())
+            // {
+            //     await foto.OpenReadStream().CopyToAsync(stream);
+            //     equipo.Logo = Convert.ToBase64String(stream.ToArray()); // Convierte la imagen a base64 o guarda el archivo en el servidor y guarda la URL
+            // }
+        }
+
         if(id == 0)
         {
             idDevuelto = await EquipoService.Guardar(equipo);
@@ -87,5 +106,9 @@
         }
     }
 
+    private void OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        foto = e.File;
+    }
    
 }
